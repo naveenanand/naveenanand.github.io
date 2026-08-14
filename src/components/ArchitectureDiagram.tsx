@@ -11,7 +11,7 @@ export default function ArchitectureDiagram({ layers }: { layers: ArchLayer[] })
             role="listitem"
             className="panel panel-hover flex flex-col gap-3 px-6 py-5 md:flex-row md:items-center md:justify-between"
             style={{
-              background: `linear-gradient(90deg, rgba(85,169,255,${0.055 + i * 0.012}), rgba(148,166,190,0.03))`,
+              background: `linear-gradient(90deg, rgba(0,0,0,${0.035 + i * 0.01}), rgba(0,0,0,0.012))`,
             }}
           >
             <h3 className="shrink-0 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-accent md:w-56">

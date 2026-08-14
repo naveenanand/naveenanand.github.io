@@ -1,28 +1,29 @@
 @import "tailwindcss";
 
 /*
-  naminovin.com design tokens — dark-first, committed dark.
-  Graphite ground, soft off-white type, one restrained electric-blue accent.
+  naveenanand.com design tokens — monochrome, light, personal.
+  White ground, near-black ink, generous type. No accent color:
+  hierarchy comes from weight, size, and gray steps.
 */
 @theme {
-  --color-base: #0a0d12;
-  --color-deep: #070a0e;
-  --color-surface: #0f141b;
-  --color-raised: #141a23;
-  --color-panel: rgba(148, 166, 190, 0.05);
+  --color-base: #ffffff;
+  --color-deep: #f6f6f5;
+  --color-surface: #ffffff;
+  --color-raised: #fafafa;
+  --color-panel: rgba(0, 0, 0, 0.018);
 
-  --color-ink: #e8ecf2;
-  --color-body: #b4bdca;
-  --color-muted: #8a94a5;
-  --color-faint: #5d6675;
+  --color-ink: #0c0c0c;
+  --color-body: #2b2b2b;
+  --color-muted: #4d4d4d;
+  --color-faint: #7a7a7a;
 
-  --color-line: rgba(148, 166, 190, 0.16);
-  --color-line-soft: rgba(148, 166, 190, 0.08);
+  --color-line: rgba(0, 0, 0, 0.16);
+  --color-line-soft: rgba(0, 0, 0, 0.08);
 
-  --color-accent: #55a9ff;
-  --color-accent-bright: #8cc5ff;
-  --color-accent-dim: rgba(85, 169, 255, 0.14);
-  --color-accent-line: rgba(85, 169, 255, 0.35);
+  --color-accent: #0c0c0c;
+  --color-accent-bright: #000000;
+  --color-accent-dim: rgba(0, 0, 0, 0.055);
+  --color-accent-line: rgba(0, 0, 0, 0.45);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -31,26 +32,27 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
+  /* Larger base — every rem-based size on the site scales from this. */
+  font-size: 17.5px;
 }
 
 body {
   background: var(--color-base);
   color: var(--color-body);
   font-family: var(--font-sans);
-  font-size: 16.5px;
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
 
 ::selection {
-  background: rgba(85, 169, 255, 0.28);
-  color: #f2f7ff;
+  background: #0c0c0c;
+  color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-ink);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -75,31 +77,31 @@ h1, h2, h3, h4 {
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-faint);
 }
 
 .panel {
   background: var(--color-panel);
   border: 1px solid var(--color-line-soft);
   border-radius: 1rem;
-  backdrop-filter: blur(4px);
 }
 
 .panel-hover {
-  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .panel-hover:hover {
   border-color: var(--color-accent-line);
   transform: translateY(-2px);
+  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.18);
 }
 
 .tag {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.02em;
   color: var(--color-muted);
   border: 1px solid var(--color-line-soft);
-  background: rgba(148, 166, 190, 0.04);
+  background: #ffffff;
   padding: 0.28em 0.62em;
   border-radius: 0.45rem;
   white-space: nowrap;
@@ -120,13 +122,13 @@ h1, h2, h3, h4 {
 .btn:hover { transform: translateY(-1px); }
 
 .btn-solid {
-  background: var(--color-accent);
-  color: #06121f;
+  background: var(--color-ink);
+  color: #ffffff;
   font-weight: 600;
 }
 .btn-solid:hover {
-  background: var(--color-accent-bright);
-  box-shadow: 0 8px 28px -10px rgba(85, 169, 255, 0.55);
+  background: #2c2c2c;
+  box-shadow: 0 10px 26px -12px rgba(0, 0, 0, 0.45);
 }
 
 .btn-ghost {
@@ -134,8 +136,7 @@ h1, h2, h3, h4 {
   color: var(--color-ink);
 }
 .btn-ghost:hover {
-  border-color: var(--color-accent-line);
-  color: var(--color-accent-bright);
+  border-color: var(--color-ink);
 }
 
 .link-quiet {
@@ -145,10 +146,14 @@ h1, h2, h3, h4 {
 .link-quiet:hover { color: var(--color-ink); }
 
 .link-accent {
-  color: var(--color-accent);
-  transition: color 0.2s;
+  color: var(--color-ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s;
 }
-.link-accent:hover { color: var(--color-accent-bright); }
+.link-accent:hover { text-decoration-color: var(--color-ink); }
 
 /*
   Reveal-on-scroll: content is VISIBLE by default (no JS, no observer —
@@ -167,7 +172,6 @@ h1, h2, h3, h4 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rv.in { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

@@ -65,25 +65,22 @@ export default function Home() {
     <>
       {/* ---------- HERO ---------- */}
       <section className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(56rem 30rem at 78% -8%, rgba(85,169,255,0.09), transparent 60%)",
-          }}
-        />
-        <div className="wrap relative grid items-center gap-10 py-16 md:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6">
+        <div className="wrap relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight md:text-[3.4rem] md:leading-[1.05]">
-              I build systems where AI, software, hardware, and human
-              interaction <span className="text-accent">meet</span>.
+            <p className="eyebrow mb-5">
+              Engineering Leader · Architect · Builder
+            </p>
+            <h1 className="text-4xl font-semibold leading-[1.06] tracking-tight md:text-[3.6rem]">
+              Naveen Anand Gunalan
             </h1>
-            <p className="mt-7 max-w-xl text-[1.05rem] text-body">
-              I&apos;m Naveen Anand Gunalan — a hands-on engineering leader and
-              software architect. 17+ years of AI platforms, developer SDKs,
-              spatial computing, and real-time embedded products. I lead the
-              organization and still get close to the code.
+            <p className="mt-6 max-w-xl text-[1.35rem] font-medium leading-snug text-ink">
+              I build systems where AI, software, hardware, and human
+              interaction meet.
+            </p>
+            <p className="mt-5 max-w-xl text-muted">
+              17+ years of AI platforms, developer SDKs, spatial computing, and
+              real-time embedded products — leading the organization and
+              staying close to the code.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3.5">
               <a href="#systems" className="btn btn-solid">
@@ -112,8 +109,15 @@ export default function Home() {
               ))}
             </p>
           </div>
-          <div className="mx-auto w-full max-w-md lg:max-w-none">
-            <HeroGraph className="h-auto w-full" />
+          <div className="mx-auto w-full max-w-xs md:max-w-sm">
+            <img
+              src="/naveen.jpg"
+              alt="Naveen Anand Gunalan"
+              width={640}
+              height={960}
+              className="aspect-[3/4] w-full rounded-2xl border border-line-soft object-cover grayscale contrast-105"
+              style={{ boxShadow: "0 24px 60px -28px rgba(0,0,0,0.35)" }}
+            />
           </div>
         </div>
       </section>
@@ -126,25 +130,30 @@ export default function Home() {
         id="build"
         eyebrow="What I Build"
         title="Four disciplines, one practice."
-        lead="The interesting work is where they overlap."
+        lead="The interesting work is where they overlap — hover the map."
       >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map((c) => (
-            <Reveal as="article" key={c.id}>
-              <div className="panel panel-hover h-full p-6">
-                <CapabilityIcon id={c.id} />
-                <h3 className="mt-4 text-[1.08rem] font-semibold text-ink">{c.title}</h3>
-                <p className="mt-2 text-[0.86rem] text-muted">{c.description}</p>
-                <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {c.tags.map((t) => (
-                    <li key={t} className="tag">
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
+        <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <Reveal>
+            <HeroGraph className="mx-auto h-auto w-full max-w-md" />
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {capabilities.map((c) => (
+              <Reveal as="article" key={c.id}>
+                <div className="panel panel-hover h-full p-6">
+                  <CapabilityIcon id={c.id} />
+                  <h3 className="mt-4 text-[1.08rem] font-semibold text-ink">{c.title}</h3>
+                  <p className="mt-2 text-[0.86rem] text-muted">{c.description}</p>
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {c.tags.map((t) => (
+                      <li key={t} className="tag">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
 

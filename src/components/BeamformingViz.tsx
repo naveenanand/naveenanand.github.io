@@ -21,7 +21,7 @@ export default function BeamformingViz() {
     let running = true;
 
     const css = getComputedStyle(document.documentElement);
-    const accent = css.getPropertyValue("--color-accent").trim() || "#55a9ff";
+    const accent = css.getPropertyValue("--color-accent").trim() || "#0c0c0c";
 
     type P = { x: number; y: number };
     let W = 0;
@@ -61,10 +61,10 @@ export default function BeamformingViz() {
           const p = (phase + k / fronts) % 1;
           const r = d * p;
           if (r < 4) continue;
-          const alpha = 0.05 + 0.3 * p * p;
+          const alpha = 0.06 + 0.34 * p * p;
           ctx!.beginPath();
           ctx!.arc(tr.x, tr.y, r, ang - 0.42, ang + 0.42);
-          ctx!.strokeStyle = `rgba(85,169,255,${alpha.toFixed(3)})`;
+          ctx!.strokeStyle = `rgba(20,20,20,${alpha.toFixed(3)})`;
           ctx!.lineWidth = 1;
           ctx!.stroke();
         }
@@ -74,13 +74,13 @@ export default function BeamformingViz() {
       for (const tr of transducers) {
         ctx!.beginPath();
         ctx!.arc(tr.x, tr.y, 4, 0, Math.PI * 2);
-        ctx!.fillStyle = "rgba(232,236,242,0.65)";
+        ctx!.fillStyle = "rgba(12,12,12,0.75)";
         ctx!.fill();
       }
       ctx!.beginPath();
       ctx!.moveTo(transducers[0].x - 16, H - 14);
       ctx!.lineTo(transducers[transducers.length - 1].x + 16, H - 14);
-      ctx!.strokeStyle = "rgba(148,166,190,0.3)";
+      ctx!.strokeStyle = "rgba(0,0,0,0.25)";
       ctx!.lineWidth = 1;
       ctx!.stroke();
 
@@ -93,7 +93,7 @@ export default function BeamformingViz() {
       ctx!.fill();
       ctx!.beginPath();
       ctx!.arc(focal.x, focal.y, 13 + pulse * 12, 0, Math.PI * 2);
-      ctx!.strokeStyle = `rgba(85,169,255,${(0.5 - pulse * 0.3).toFixed(3)})`;
+      ctx!.strokeStyle = `rgba(0,0,0,${(0.45 - pulse * 0.25).toFixed(3)})`;
       ctx!.lineWidth = 1;
       ctx!.stroke();
 
@@ -137,7 +137,7 @@ export default function BeamformingViz() {
           <path
             d="M26 62 V30 a5 5 0 0 1 10 0 V44 M36 44 V22 a5 5 0 0 1 10 0 V44 M46 44 V26 a5 5 0 0 1 10 0 V46 M56 46 V34 a5 5 0 0 1 10 0 V52 a22 22 0 0 1 -22 22 H40 A14 14 0 0 1 26 62"
             fill="none"
-            stroke="rgba(232,236,242,0.55)"
+            stroke="rgba(0,0,0,0.5)"
             strokeWidth="2.4"
             strokeLinecap="round"
             strokeLinejoin="round"
