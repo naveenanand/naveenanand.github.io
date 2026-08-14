@@ -36,7 +36,7 @@ export const projects: Project[] = [
     years: "2018 — Present",
     role: "Architect / Senior Director of Engineering",
     summary:
-      "Custom ultrasonic hardware, real-time beamforming, XR applications, SDK networking, embedded systems, FPGA control, and cloud services — one platform, delivered end to end.",
+      "Custom ultrasonic hardware to XR apps — one platform, delivered end to end.",
     layers: [
       {
         name: "Experience Layer",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     years: "Emerge · Wave-1",
     role: "Algorithm design & implementation",
     summary:
-      "The C algorithm that steers an ultrasonic transducer array so acoustic energy converges at precise points in space — pressure you can feel with a bare hand.",
+      "The C algorithm that focuses ultrasound into pressure you can feel in mid-air.",
     viz: "beamforming",
     technologies: ["C", "C++"],
     capabilities: [
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     years: "Emerge",
     role: "Architecture & implementation",
     summary:
-      "An MCP-enabled RAG platform over 3,000+ engineering documents — semantic retrieval, tool calling, and multi-agent workflows for engineers.",
+      "MCP-enabled RAG over 3,000+ engineering docs — up to 3× faster investigation.",
     flow: [
       { label: "Documents", detail: "3,000+ engineering docs, SDK references, design notes" },
       { label: "Ingestion / chunking" },
@@ -232,7 +232,7 @@ export const projects: Project[] = [
     role: "R&D lead",
     status: "Ongoing R&D",
     summary:
-      "An ongoing multimodal AI R&D system that converts information about an object into tactile interaction specifications.",
+      "Multimodal AI that turns object understanding into tactile interaction specs.",
     viz: "tactility",
     technologies: [
       "Multimodal AI",
@@ -273,7 +273,7 @@ export const projects: Project[] = [
     years: "2015 — 2018",
     role: "Senior Software Engineer / Engineering Lead · DAQRI",
     summary:
-      "Unity SDK extensions bridging managed C# with native platform layers across four operating systems — plus 8+ shipped AR applications built on them.",
+      "Unity SDK bridging C# to native layers across four operating systems.",
     flow: [
       { label: "Unity / C#", detail: "applications and managed SDK surface" },
       { label: "Native bridge", detail: "managed ↔ native interop" },

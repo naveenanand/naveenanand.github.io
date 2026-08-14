@@ -16,6 +16,50 @@ import { projects } from "@/data/projects";
 const featured = projects.find((p) => p.slug === "emerge-platform")!;
 const rest = projects.filter((p) => p.slug !== "emerge-platform");
 
+function CapabilityIcon({ id }: { id: string }) {
+  const p = {
+    className: "h-9 w-9",
+    viewBox: "0 0 36 36",
+    fill: "none",
+    stroke: "var(--color-accent)",
+    strokeWidth: 1.6,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true as const,
+  };
+  switch (id) {
+    case "ai": // node spark
+      return (
+        <svg {...p}>
+          <circle cx="18" cy="18" r="5" />
+          <path d="M18 4v6M18 26v6M4 18h6M26 18h6M8 8l4.5 4.5M23.5 23.5 28 28M28 8l-4.5 4.5M12.5 23.5 8 28" strokeWidth="1.3" stroke="var(--color-muted)" />
+        </svg>
+      );
+    case "spatial": // headset
+      return (
+        <svg {...p}>
+          <path d="M5 13a3 3 0 0 1 3-3h20a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5.5l-3-3.5a2 2 0 0 0-3 0l-3 3.5H8a3 3 0 0 1-3-3v-8z" />
+        </svg>
+      );
+    case "platforms": // stacked SDK blocks
+      return (
+        <svg {...p}>
+          <path d="M18 4 31 11 18 18 5 11z" />
+          <path d="M5 18l13 7 13-7M5 25l13 7 13-7" stroke="var(--color-muted)" strokeWidth="1.3" />
+        </svg>
+      );
+    case "systems": // chip
+      return (
+        <svg {...p}>
+          <rect x="10" y="10" width="16" height="16" rx="3" />
+          <path d="M14 10V5M22 10V5M14 31v-5M22 31v-5M10 14H5M10 22H5M31 14h-5M31 22h-5" stroke="var(--color-muted)" strokeWidth="1.3" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 export default function Home() {
   return (
     <>
@@ -36,15 +80,10 @@ export default function Home() {
               interaction <span className="text-accent">meet</span>.
             </h1>
             <p className="mt-7 max-w-xl text-[1.05rem] text-body">
-              I&apos;m Naveen Anand Gunalan, a hands-on engineering leader and
-              software architect with 17+ years building AI platforms,
-              developer SDKs, spatial-computing systems, cloud services, and
-              real-time embedded products.
-            </p>
-            <p className="mt-4 max-w-xl text-muted">
-              I lead engineering organizations, shape product and technical
-              roadmaps, architect platforms, and still like getting close to
-              the code when the problem is hard.
+              I&apos;m Naveen Anand Gunalan — a hands-on engineering leader and
+              software architect. 17+ years of AI platforms, developer SDKs,
+              spatial computing, and real-time embedded products. I lead the
+              organization and still get close to the code.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3.5">
               <a href="#systems" className="btn btn-solid">
@@ -87,15 +126,16 @@ export default function Home() {
         id="build"
         eyebrow="What I Build"
         title="Four disciplines, one practice."
-        lead="Most of my work sits where these overlap — an SDK above custom hardware, AI reasoning about physical interaction, a cloud service behind a real-time device."
+        lead="The interesting work is where they overlap."
       >
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {capabilities.map((c) => (
             <Reveal as="article" key={c.id}>
-              <div className="panel panel-hover h-full p-7 md:p-8">
-                <h3 className="text-xl font-semibold text-ink">{c.title}</h3>
-                <p className="mt-3 text-[0.95rem] text-muted">{c.description}</p>
-                <ul className="mt-5 flex flex-wrap gap-2">
+              <div className="panel panel-hover h-full p-6">
+                <CapabilityIcon id={c.id} />
+                <h3 className="mt-4 text-[1.08rem] font-semibold text-ink">{c.title}</h3>
+                <p className="mt-2 text-[0.86rem] text-muted">{c.description}</p>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
                   {c.tags.map((t) => (
                     <li key={t} className="tag">
                       {t}
@@ -142,11 +182,9 @@ export default function Home() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="text-muted">
-              I build AI as a product capability — retrieval systems, agents,
-              and multimodal models like the Tactility Generation Model. But I
-              also treat AI agents as participants in the software-development
-              process itself: planning, implementing, testing, and documenting
-              in vertical slices that stay continuously verifiable.
+              AI in the product — retrieval, agents, multimodal models. And AI
+              in the process — agents that plan, implement, and test in
+              verifiable vertical slices.
             </p>
             <Link href="/ai/" className="link-accent mt-6 inline-block text-[0.9rem] font-medium">
               How I build with AI →
@@ -189,10 +227,8 @@ export default function Home() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="text-muted">
-              From AR helmets to mid-air haptics: a decade of building
-              interactive systems where the interface is the physical world —
-              XR applications, spatial input, tactile feedback, and the custom
-              hardware and SDKs underneath them.
+              From AR helmets to mid-air haptics — a decade of interfaces where
+              the physical world is the screen.
             </p>
             <Link
               href="/spatial/"
@@ -226,9 +262,8 @@ export default function Home() {
         title="From company priorities to C code — one continuous range."
         lead={
           <>
-            Leadership and implementation aren&apos;t opposites. The most useful
-            architecture decisions come from operating across every level of
-            the stack.{" "}
+            The most useful architecture decisions come from operating across
+            every level.{" "}
             <Link href="/leadership/" className="link-accent">
               How I lead →
             </Link>
@@ -292,9 +327,7 @@ export default function Home() {
           <Reveal>
             <p className="max-w-xl text-muted">
               Named inventor on 7+ granted patents spanning XR, haptics,
-              sensing, and human-computer interaction — the kind of work that
-              only exists when hardware, software, and human perception are
-              designed together.
+              sensing, and human-computer interaction.
             </p>
           </Reveal>
           <Reveal>
